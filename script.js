@@ -8,6 +8,13 @@ const myLibrary = [
 ];  
 
 
+const newBookButton = document.getElementById('new-book');
+const dialog = document.querySelector('dialog');
+const bookForm = document.getElementById('book-form');
+const submitButton = document.getElementById('submit-btn');
+const cancelButton = document.getElementById('cancel-btn');
+
+
 function Book (title, author, pages, year, isRead) {
     this.title = title;
     this.author = author;
@@ -37,9 +44,13 @@ function displayBooksTable () {
 
 displayBooksTable();
 
+function showFormDialog () {
+    dialog.showModal();
+}
 
+function closeFormDialog () {
+    dialog.close();
+}
 
-// const book1 = new Book("river and the source", "Margaret Ogolla", 400, "2000", true); 
-// addBookToLibrary(book1);
-// console.log(book1);
-// console.log(myLibrary);
+newBookButton.addEventListener('click', showFormDialog);
+cancelButton.addEventListener('click', closeFormDialog);
