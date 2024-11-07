@@ -10,7 +10,7 @@ const myLibrary = [
 
 const newBookButton = document.getElementById('new-book');
 const dialog = document.querySelector('dialog');
-const bookForm = document.getElementById('book-form');
+const newBookForm = document.getElementById('book-form');
 const submitButton = document.getElementById('submit-btn');
 const cancelButton = document.getElementById('cancel-btn');
 
@@ -41,16 +41,34 @@ function displayBooksTable () {
         tableBody.appendChild(row);
     });
 }
-
-displayBooksTable();
-
+// show modal
 function showFormDialog () {
     dialog.showModal();
 }
 
+//close modal
 function closeFormDialog () {
     dialog.close();
 }
 
 newBookButton.addEventListener('click', showFormDialog);
 cancelButton.addEventListener('click', closeFormDialog);
+
+// Handle form submission behavior.
+const bookForm = document.getElementById('book-form');
+bookForm.addEventListener('click', (event) => {
+    event.preventDefault();
+})
+
+// Get form input values
+const title = document.getElementById('book-title').value;
+const author = document.getElementById('book-author').value;
+const pages =  parseInt(document.getElementById('book-pages').value, 10); /* to base 10 */
+const year = parseInt(document.getElementById('book-year').value, 10);
+const isRead = document.getElementById('book-read').checked;
+
+
+
+displayBooksTable();
+
+
