@@ -4,11 +4,13 @@
     box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 16px;
-    outline: 1px solid greenyellow;
 
 }
 
-:root {}
+:root {
+    --background-color: rgb(157, 157, 157);
+    --font-color: white;
+}
 
 body {
     display: flex;
@@ -16,13 +18,106 @@ body {
     align-items: center;
     justify-content: center;
     margin: 50px auto;
-    outline: 1px solid red;
+    background-color: var(--background-color);
+    color: var(--font-color);
 }
 
 table {
     margin: 20px auto;
+    table-layout: auto;
+    border: 1px solid black;
+}
+
+tr {
+    border: 1px solid black;
+
+}
+
+th {
+    padding: 5px;
+    font-size: 1.5rem;
+    border: 1px solid black;
+
+}
+td {
+    padding: 5px;
+text-align: center;
+font-size: 1.25rem;
+border: 1px solid black;
+
 }
 
 #new-book {
     margin: 20px auto;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100px;
+    cursor: pointer;
 }
+
+dialog {
+    margin: 30px;
+
+}
+
+#book-form {
+    padding: 20px;
+}
+
+label, input {
+    display: inline;
+    font-size: 1.2rem;
+    
+}
+
+label {
+    margin-right: 10px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+form button {
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: gray;
+}
+
+.wrapper h4 {
+    text-align: center;
+    margin: 10px;
+}
+
+.remove-button, .toggle-read-button {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.toggle-read-button {
+    width: 150px;
+}
+
+.toggle-read-button:hover {
+    background-color: gray;
+    color: var(--font-color);
+    
+}
+
+.remove-button {
+    background-color: rgb(226, 69, 69);
+    opacity: 0.7;
+}
+.remove-button:hover {
+    opacity: 2;
+    color:white;
+}
+

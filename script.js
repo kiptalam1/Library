@@ -36,7 +36,7 @@ function displayBooksTable() {
     tableBody.innerHTML = '';
     myLibrary.forEach((book, index) => {
         const row = document.createElement('tr');
-
+        
         for (const key in book) {
             if (typeof book[key] === 'function') continue;
             const cell = document.createElement('td');
