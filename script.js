@@ -55,17 +55,39 @@ newBookButton.addEventListener('click', showFormDialog);
 cancelButton.addEventListener('click', closeFormDialog);
 
 // Handle form submission behavior.
-const bookForm = document.getElementById('book-form');
-bookForm.addEventListener('click', (event) => {
+submitButton.addEventListener('click', (event) => {
     event.preventDefault();
+
+        // Get form input values
+    const title = document.getElementById('book-title').value;
+    const author = document.getElementById('book-author').value;
+    const pages =  parseInt(document.getElementById('book-pages').value, 10); /* to base 10 */
+    const year = parseInt(document.getElementById('book-year').value, 10);
+    const isRead = document.getElementById('book-read').checked;
+
+
+    // validate input
+    if (!title || !author || isNaN(pages) || isNaN(year)) {
+        alert("Please fill in all required fields");
+        return;
+    }
+
+    // save book values in a new book
+    const newBook = new Book(title, author, pages, year, isRead);
+
+    
+    myLibrary.push(newBook);
+
+    displayBooksTable();
+
+
+    newBookForm.reset();
+
+    dialog.close();
+
 })
 
-// Get form input values
-const title = document.getElementById('book-title').value;
-const author = document.getElementById('book-author').value;
-const pages =  parseInt(document.getElementById('book-pages').value, 10); /* to base 10 */
-const year = parseInt(document.getElementById('book-year').value, 10);
-const isRead = document.getElementById('book-read').checked;
+
 
 
 
