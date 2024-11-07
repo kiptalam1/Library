@@ -35,9 +35,22 @@ function displayBooksTable () {
 
         for (const key in book) {
             const cell = document.createElement('td');
+            if (key === 'isRead') {
+            cell.textContent = book[key]? 'Yes' : 'No';
+            } else {
             cell.textContent = book[key];
+            }
             row.appendChild(cell);
         }
+        // add remove button to each book
+        const removeCell = document.createElement('td');
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.classList.add('remove-button');
+
+        removeCell.appendChild(removeButton);
+        row.appendChild(removeCell);
+
         tableBody.appendChild(row);
     });
 }
@@ -53,6 +66,14 @@ function closeFormDialog () {
 
 newBookButton.addEventListener('click', showFormDialog);
 cancelButton.addEventListener('click', closeFormDialog);
+
+// close dialog when outer screen is clicked.
+const wrapper = document.querySelector('.wrapper');
+dialog.addEventListener('click', (e) => {
+    if (!wrapper.contains(e.target)) {
+        dialog.close();
+    }
+});
 
 // Handle form submission behavior.
 submitButton.addEventListener('click', (event) => {
@@ -80,12 +101,11 @@ submitButton.addEventListener('click', (event) => {
 
     displayBooksTable();
 
-
     newBookForm.reset();
 
     dialog.close();
 
-})
+});
 
 
 
